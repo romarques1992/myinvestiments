@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaxGainsTable extends Migration
+class CreateInvestimentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateTaxGainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tax_gains', function (Blueprint $table) {
+        Schema::create('investiments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
-            $table->float('value');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->float('investment_value');
+            $table->float('updated_value');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateTaxGainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tax_gains');
+        Schema::dropIfExists('investiments');
     }
 }
