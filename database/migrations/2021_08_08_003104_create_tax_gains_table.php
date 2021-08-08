@@ -14,9 +14,9 @@ class CreateTaxGainsTable extends Migration
     public function up()
     {
         Schema::create('tax_gains', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('description');
-            $table->floatval('value');
+            $table->float('value');
             $table->timestamps();
         });
     }

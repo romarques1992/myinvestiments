@@ -14,7 +14,7 @@ class CreateTypeInvestimentsTable extends Migration
     public function up()
     {
         Schema::create('type_investiments', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('tax_gains_id')->unsigned();
             $table->foreign('tax_gains_id')->references('id')->on('tax_gains');
             $table->string('description');
