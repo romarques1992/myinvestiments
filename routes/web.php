@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    InvestimentController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',  [InvestimentController::class,'index'])->name('investiments.index');
+Route::get('/investiment/{id}',  [InvestimentController::class,'show'])->name('investiment.show');
